@@ -1,0 +1,26 @@
+apply plugin: 'war'
+apply from: file("$rootDir/gradle/mybatisGenerator.gradle")
+
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.springframework.boot:spring-boot-starter-test')
+    compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+    compile('net.sourceforge.nekohtml:nekohtml:1.9.22')
+    compile('com.baomidou:mybatis-plus:2.3')
+    compile('com.baomidou:mybatisplus-spring-boot-starter:1.0.5')
+    compile('org.springframework.boot:spring-boot-starter-data-redis')
+    compile('redis.clients:jedis:2.9.0')
+    compile('com.github.penggle:kaptcha:2.+')
+    compile('org.apache.shiro:shiro-spring:1.4.0')
+    compile('org.apache.shiro:shiro-core:1.4.0')
+    compile('org.apache.shiro:shiro-web:1.4.0')
+    compile('org.crazycake:shiro-redis:2.8.6')
+    compile('com.github.theborakompanioni:thymeleaf-extras-shiro:2.0.0')
+    compile('io.springfox:springfox-swagger2:2.8.0')
+    compile('io.springfox:springfox-swagger-ui:2.8.0')
+    compile('com.alibaba:druid:1.1.8')
+    compile('org.projectlombok:lombok:1.18.0')
+    compile ('org.springframework.boot:spring-boot-devtools')
+    compile('org.apache.httpcomponents:httpclient')
+    compile ('de.ruedigermoeller:fst:2.57')
+}

@@ -1,0 +1,50 @@
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.17.8:3306/smartcontrol?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: cathome
+    ## 配置扩展插件 监控统计用filters=stat 日志用filters=log4j 防御sql注入用filters=wall
+    filters: stat,wall
+    ## 最大连接池数量  初始化建立物理连接的个数  获取连接时最长的等待时间  最小连接池数量  maxIdle已经弃用
+    maxActive: 20
+    initialSize: 3
+    maxWait: 60000
+    maxIdle: 15
+    ## 有两个含义 1.Destroy 线程会检测连接的时间 2.testWhileIdle的判断依据
+    timeBetweenEvictionRunsMillis: 60000
+    ## Destory线程中如果检测到当前连接的最后活跃时间和当前时间的差值大于minEvictableIdleTimeMillis，则关闭当前连接
+    minEvictableIdleTimeMillis: 300000
+    ## 用来检测连接是否的sql，要求是一个查询语句。在mysql中通常设置为SELECT 'X'
+    validationQuery: SELECT 'x'
+    ## 申请连接的时候检测，如果空闲时间大于timeBetweenEvictionRunsMillis，执行validationQuery连接是否有效
+    testWhileIdle: true
+    ## 申请连接时执行validationQuery检测连接是否有效 这个配置会降低性能
+    testOnBorrow: false
+    ## 归还连接时执行validationQuery检测连接是否有效 这个配置会降低性能
+    testOnReturn: false
+    poolPreparedStatements: false
+    ## 要启用PSCache，必须配置大于0，当大于0时，poolPreparedStatements自动触发修改为true
+    maxOpenPreparedStatements: 20
+    ## 对于建立连接超过removeAbandonedTimeout的连接强制关闭
+    removeAbandoned: true
+    ## 指定连接建立多长就被强制关闭
+    removeAbandonedTimeout: 1800
+    ## 指定发生removeabandoned时，是否记录当前线程的堆栈信息到日志中
+    logAbandoned: true
+    logDifferentThread: true
+    connectionProperties:  druid.stat.mergeSql=true;druid.stat.logSlowSql=true;druid.stat.slowSqlMillis=3000
+    useGlobalDataSourceStat: true
+    # Druid 监控 Servlet 配置参数
+    druidRegistrationUrl: /druid/*
+    resetEnable: true
+    loginUsername: admin
+    loginPassword: admin
+    # Druid 监控过滤相关配置参数
+    filtersUrlPatterns: /**
+    exclusions: '*.js,*.gif,*.jpg,*.jpeg,*.png,*.css,*.ico,*.jsp,/druid/*'
+    sessionStatMaxCount: 2000
+    sessionStatEnable: true
+    principalSessionName: session_user_key
+    profileEnable: true

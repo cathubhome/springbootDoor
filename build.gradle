@@ -1,0 +1,43 @@
+apply from: "$rootDir/gradle/global.gradle"
+buildscript {
+    ext {
+        springBootVersion = '2.0.2.RELEASE'
+    }
+    repositories {
+        maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+configure(subprojects.findAll { it.name.endsWith('-admin') }) {
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+    configurations {
+        all*.exclude module: 'spring-boot-starter-logging'
+        all*.exclude module: 'logback-classic'
+        all*.exclude module: 'log4j-over-slf4j'
+    }
+    dependencies {
+        compile('commons-lang:commons-lang:2.3')
+        compile('org.springframework.boot:spring-boot-starter')
+        /* 引入了AOP依赖后，默认就增加了@EnableAspectJAutoProxy */
+        compile('org.springframework.boot:spring-boot-starter-aop')
+        compile('org.springframework.boot:spring-boot-starter-log4j2')
+        /* 加上这个才能辨认到log4j2.yml文件 */
+        compile('com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.9.4')
+        compile('org.jsoup:jsoup:1.+')
+        compile('org.apache.commons:commons-lang3:3.+')
+        compile('com.alibaba:fastjson:1.+')
+        runtime("mysql:mysql-connector-java:5.1.45")
+        testCompile('org.springframework.boot:spring-boot-starter-test')
+        compile('org.ebaysf.web:cors-filter:1.0.1')
+        /* Quartz:定时任务分布式多节点持久化 */
+        compile ('org.quartz-scheduler:quartz:2.3.0')
+        compile ('org.quartz-scheduler:quartz-jobs:2.3.0')
+        compile ('org.springframework:spring-context-support:5.0.7.RELEASE')
+        /*mongodb nosql数据库依赖*/
+        compile('org.springframework.boot:spring-boot-starter-data-mongodb')
+    }
+}
