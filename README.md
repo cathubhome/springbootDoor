@@ -21,4 +21,4 @@ springboot version:2.0
 14、整合quartz任务框架并支持分布式多节点持久化；
 15、采用org.apache.commons.lang3.time提供多线程安全的时间处理工具类
 16、重写springmvc请求参数绑定,自定义实现SpringMVC参数绑定规则
-17、整合mongodb数据库，简单使用MongoRepository
+17、整合mongodb文档数据库，简单使用MongoRepository
