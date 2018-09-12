@@ -39,5 +39,7 @@ configure(subprojects.findAll { it.name.endsWith('-admin') }) {
         compile ('org.springframework:spring-context-support:5.0.7.RELEASE')
         /*mongodb nosql数据库依赖*/
         compile('org.springframework.boot:spring-boot-starter-data-mongodb')
+        /*kafka分布式发布订阅消息*/
+        
     }
 }

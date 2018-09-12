@@ -23,4 +23,14 @@ dependencies {
     compile ('org.springframework.boot:spring-boot-devtools')
     compile('org.apache.httpcomponents:httpclient')
     compile ('de.ruedigermoeller:fst:2.57')
+    /*cors跨域*/
+    compile('org.ebaysf.web:cors-filter:1.0.1')
+    /* Quartz:定时任务分布式多节点持久化 */
+    compile ('org.quartz-scheduler:quartz:2.3.0')
+    compile ('org.quartz-scheduler:quartz-jobs:2.3.0')
+    compile ('org.springframework:spring-context-support:5.0.7.RELEASE')
+    /*mongodb nosql数据库依赖*/
+    compile('org.springframework.boot:spring-boot-starter-data-mongodb')
+    /*kafka分布式发布订阅消息*/
+    compile('org.springframework.kafka:spring-kafka:1.+')
 }

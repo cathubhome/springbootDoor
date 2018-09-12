@@ -14,16 +14,6 @@ public interface SysLogMapper extends BaseMapper<SysLog> {
     })
     int deleteByPrimaryKey(Long id);
 
-    @Insert({
-        "insert into sys_log (operation, clazz, ",
-        "method, remark, ",
-        "params, timer, modify_user, ",
-        "modify_time, ip_address)",
-        "values (#{operation,jdbcType=VARCHAR}, #{clazz,jdbcType=VARCHAR}, ",
-        "#{method,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, ",
-        "#{params,jdbcType=VARCHAR}, #{timer,jdbcType=BIGINT}, #{modifyUser,jdbcType=BIGINT}, ",
-        "#{modifyTime,jdbcType=TIMESTAMP}, #{ipAddress,jdbcType=VARCHAR})"
-    })
     @Select({
         "select",
         "id, operation, clazz, method, remark, params, timer, modify_user, modify_time, ",

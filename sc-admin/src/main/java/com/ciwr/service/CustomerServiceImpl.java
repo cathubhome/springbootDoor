@@ -29,9 +29,15 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public void insert(Customer customer){
+    public void save(Customer customer){
         customerRepository.insert(customer);
     }
+
+    @Override
+    public void deleteById(String id){
+        customerRepository.deleteById(id);
+    }
+
 
     @Override
     public Customer findById(String id){

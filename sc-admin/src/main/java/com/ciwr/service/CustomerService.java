@@ -21,10 +21,16 @@ public interface CustomerService {
     List<Customer> queryAll();
 
     /**
-     * 插入一条客户信息
+     * 保存或修改用户
      * @param customer
      */
-    void insert(Customer customer);
+    void save(Customer customer);
+
+    /**
+     * 根据id删除客户
+     * @param id
+     */
+    void deleteById(String id);
 
     /**
      * 根据id查询客户信息

@@ -46,9 +46,31 @@ spring:
   #mongodo配置
   data:
     mongodb:
-      host: 192.168.17.18
-      port: 27017
-      uri: mongodb://192.168.17.18/mongo
+      uri: mongodb://mongo:mongo@192.168.17.18:27017/mongo #mongodb版本的鉴权不太一致，配置错误会到导致鉴权失败
+  #kafka配置
+  kafka:
+      # kafka服务器地址(可以多个)
+      bootstrap-servers: 192.168.17.18:9092
+      consumer:
+        # 指定一个默认的组名
+        group-id: test-consumer-group
+        # earliest:当各分区下有已提交的offset时，从提交的offset开始消费；无提交的offset时，从头开始消费
+        # latest:当各分区下有已提交的offset时，从提交的offset开始消费；无提交的offset时，消费新产生的该分区下的数据
+        # none:topic各分区都存在已提交的offset时，从offset后开始消费；只要有一个分区不存在已提交的offset，则抛出异常
+        auto-offset-reset: earliest
+        # key/value的反序列化
+        key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+        value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      producer:
+        # key/value的序列化
+        key-serializer: org.apache.kafka.common.serialization.StringSerializer
+        value-serializer: org.apache.kafka.common.serialization.StringSerializer
+        # 批量抓取
+        batch-size: 65536
+        # 缓存容量
+        buffer-memory: 524288
+        # 服务器地址
+        bootstrap-servers: 192.168.17.18:9092
 
 logging:
   config: classpath:log4j2.yml
@@ -92,4 +114,9 @@ upload:
 # 项目根目录
 baseUrl: http://localhost:8080/SmartControl/
 #debug: true
+
+
+kafka:
+  test:
+    topic: test
 

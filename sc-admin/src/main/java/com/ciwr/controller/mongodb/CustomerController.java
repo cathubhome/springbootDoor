@@ -24,7 +24,13 @@ public class CustomerController {
 
     @PostMapping("put")
     public G put(Customer customer) {
-        customerService.insert(customer);
+        customerService.save(customer);
+        return G.ok();
+    }
+
+    @GetMapping("delete")
+    public G deleteById(String id){
+        customerService.deleteById(id);
         return G.ok();
     }
 
@@ -69,6 +75,7 @@ public class CustomerController {
         Page<Customer> customList = customerService.findByFirstNameLike(firstName, page, rows);
         return customList;
     }
+
 
 
 }

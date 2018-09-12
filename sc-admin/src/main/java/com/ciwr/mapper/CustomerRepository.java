@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created with IDEA
  * Author:catHome
- * Description:
+ * Description: 客户仓库
  * Time:Create on 2018/9/11 16:39
  */
 public interface CustomerRepository extends MongoRepository<Customer,String>{
@@ -34,7 +34,7 @@ public interface CustomerRepository extends MongoRepository<Customer,String>{
 
 
     /**
-     * 根据pojo属性模糊查询并分页
+     * 根据pojo属性模糊查询并分页，@Query注解的fields指定返回的field域
      * @param firstName
      * @param pageable
      * @return
