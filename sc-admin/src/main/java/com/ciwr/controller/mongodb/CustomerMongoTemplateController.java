@@ -14,16 +14,16 @@ import java.util.List;
 /**
  * Created with IDEA
  * Author:catHome
- * Description: 使用mongo respository操作mongodb
+ * Description: 使用mongodb template操作mongodb
  * Time:Create on 2018/9/11 16:44
  */
 @RestController
-@RequestMapping("customer")
+@RequestMapping("consumer")
 @Api(description = "客户api")
-public class CustomerController {
+public class CustomerMongoTemplateController {
 
     @Autowired
-    @Qualifier(value = "customerService")
+    @Qualifier(value = "CustomerServiceMongoTemplateService")
     private CustomerService customerService;
 
     @ApiOperation(value = "新添客户",response = Customer.class)

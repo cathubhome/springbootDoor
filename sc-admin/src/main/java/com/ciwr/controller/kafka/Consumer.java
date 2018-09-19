@@ -17,11 +17,12 @@ import java.util.Optional;
 @Slf4j
 public class Consumer {
 
-    @KafkaListener(topics = "${kafka.test.topic}")
+    @KafkaListener(topics = "${kafka.test.topic}",groupId = "test-consumer-group")
     public void listen(ConsumerRecord<?, ?> record) {
         Optional<String> topic = Optional.ofNullable(record.topic());
         Optional<?> key = Optional.ofNullable(record.key());
         Optional<?> kafkaMessage = Optional.ofNullable(record.value());
         log.debug("kafka receive topic-{},key-{},message-{}",topic.get(),key.get(), kafkaMessage.get());
     }
+
 }

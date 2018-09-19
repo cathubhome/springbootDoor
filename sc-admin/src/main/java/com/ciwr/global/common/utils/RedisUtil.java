@@ -10,6 +10,7 @@ import java.util.concurrent.TimeUnit;
 
 @Component("redisUtil")
 public class RedisUtil {
+
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;
 
@@ -102,18 +103,19 @@ public class RedisUtil {
 
     /**
      * 写入缓存
-     *
-     * @param key
-     * @param value
+     * @param key 键
+     * @param value 值
+     * @param expireTime 缓存过期时间
+     * @param timeUnit 时间单位
      * @return
      */
-    public boolean set(final String key, Object value, Long expireTime) {
+    public boolean set(final String key, Object value, Long expireTime,TimeUnit timeUnit) {
         boolean result = false;
         try {
             ValueOperations<String, Object> operations = redisTemplate
                     .opsForValue();
             operations.set(key, value);
-            redisTemplate.expire(key, expireTime, TimeUnit.DAYS);
+            redisTemplate.expire(key, expireTime, timeUnit);
             result = true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -121,8 +123,4 @@ public class RedisUtil {
         return result;
     }
 
-    public void setRedisTemplate(
-            RedisTemplate<String, Object> redisTemplate) {
-        this.redisTemplate = redisTemplate;
-    }
 }

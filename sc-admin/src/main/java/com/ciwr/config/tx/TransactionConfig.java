@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.TransactionManagementConfigure
 @Configuration
 @EnableTransactionManagement
 public class TransactionConfig implements TransactionManagementConfigurer {
+
     @Autowired
     private DruidDataSource druidDataSource;
 

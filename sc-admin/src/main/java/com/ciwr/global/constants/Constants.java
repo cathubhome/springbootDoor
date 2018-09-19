@@ -36,4 +36,7 @@ public class Constants {
     public static final String SALT=null;
     //加密次数
     public static final Integer HASHITERATIONS=1024;
+
+    //mongodb Collection
+    public static final String CUSTEOMER_COLLECTION_NAME="customer";
 }

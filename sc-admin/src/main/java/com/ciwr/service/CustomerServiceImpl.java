@@ -16,7 +16,7 @@ import java.util.Optional;
  * Description: 客户服务实现类
  * Time:Create on 2018/9/11 16:42
  */
-@Service
+@Service(value = "customerService")
 @SuppressWarnings("all")
 public class CustomerServiceImpl implements CustomerService {
 
