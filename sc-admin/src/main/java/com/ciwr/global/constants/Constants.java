@@ -39,4 +39,7 @@ public class Constants {
 
     //mongodb Collection
     public static final String CUSTEOMER_COLLECTION_NAME="customer";
+
+    //solr core
+    public static final String SOLR_COLLECION_NAME="core";
 }

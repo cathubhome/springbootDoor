@@ -22,3 +22,5 @@ springboot version:2.0
 16、重写springmvc请求参数绑定,自定义实现SpringMVC参数绑定规则  
 17、整合mongodb文档数据库，使用MongoRepository或MongoTemplate对mongodb操作，参考https://gitee.com/zkane/springboot2-mongodb-demo    
 18、kafka的简要使用 
+19、简要集成Hbase并使用  
+

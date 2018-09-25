@@ -2,7 +2,7 @@ package com.ciwr.controller.mongodb;
 
 import com.ciwr.global.common.utils.G;
 import com.ciwr.modle.Customer;
-import com.ciwr.service.CustomerService;
+import com.ciwr.service.mongodb.CustomerService;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

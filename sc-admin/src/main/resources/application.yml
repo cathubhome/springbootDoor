@@ -43,10 +43,14 @@ spring:
       max-idle: 50
       # 连接池中的最小空闲连接
       min-idle: 8
-  #mongodo配置
   data:
+   #mongodo配置
     mongodb:
-      uri: mongodb://mongo:mongo@192.168.17.18:27017/mongo #mongodb版本的鉴权不太一致，配置错误会到导致鉴权失败
+    #mongodb版本的鉴权不太一致，配置错误会到导致鉴权失败
+      uri: mongodb://mongo:mongo@192.168.17.18:27017/mongo
+    #solr配置
+    solr:
+      host: http://192.168.17.8:8080/solr
   #kafka配置
   kafka:
       # kafka服务器地址(可以多个)
@@ -71,6 +75,11 @@ spring:
         buffer-memory: 524288
         # 服务器地址
         bootstrap-servers: 192.168.17.18:9092
+#hbase配置
+hbase:
+  zookeeper:
+    quorum: 192.168.17.28
+    port: 2181
 
 logging:
   config: classpath:log4j2.yml
@@ -105,6 +114,8 @@ mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true
     cache-enabled: false
+
+
 
 #文件上传路径
 upload:

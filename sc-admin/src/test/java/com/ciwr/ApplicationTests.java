@@ -1,6 +1,6 @@
 package com.ciwr;
 
-import com.ciwr.global.utils.HttpClientApi;
+import com.ciwr.service.hbase.HbaseService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -8,28 +8,29 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.io.IOException;
-
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @Slf4j
 public class ApplicationTests {
 
-    @Test
-    public void contextLoads() {
-    }
-
     @Autowired
-    private HttpClientApi httpClientApi;
+    private HbaseService hbaseService;
 
     @Test
-    public void testGet(){
-        try {
-            String response = httpClientApi.doGet("http://www.baidu.com");
-            log.info("请求返回：{}",response);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public void test() {
+
+//        Result row = hbaseService.getRow("user", "1");
+//        for (KeyValue kv : row.raw()) {
+//            System.out.print(new String(kv.getRow()) + " ");
+//            System.out.print(new String(kv.getFamily()) + ":");
+//            System.out.print(new String(kv.getQualifier()) + " = ");
+//            System.out.print(new String(kv.getValue()));
+//            System.out.print(" timestamp = " + kv.getTimestamp() + "\n");
+//
+//        }
+        hbaseService.put("2","user","info1",new String[]{"name","age"},new String[]{"tom","26"});
     }
+
+
 
 }

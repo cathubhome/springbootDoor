@@ -2,7 +2,7 @@ package com.ciwr.controller.mongodb;
 
 import com.ciwr.global.common.utils.G;
 import com.ciwr.modle.Customer;
-import com.ciwr.service.CustomerService;
+import com.ciwr.service.mongodb.CustomerService;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -26,7 +26,7 @@ public class CustomerController {
     @Qualifier(value = "customerService")
     private CustomerService customerService;
 
-    @ApiOperation(value = "新添客户",response = Customer.class)
+    @ApiOperation(value = "新添客户")
     @PostMapping("put")
     public G put(@RequestBody Customer customer) {
         customer.setId(null);
@@ -51,7 +51,7 @@ public class CustomerController {
     @GetMapping("get")
     @ApiOperation(value = "根据d查询客户")
     @ApiImplicitParams({
-            @ApiImplicitParam(value = "id",name = "客户id",required = true,paramType = "long")
+            @ApiImplicitParam(value = "客户id",name = "id",required = true,paramType = "long")
     })
     public Customer findCustomById(String id) {
         Customer customer = customerService.findById(id);

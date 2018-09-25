@@ -33,4 +33,9 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-data-mongodb')
     /*kafka分布式发布订阅消息*/
     compile('org.springframework.kafka:spring-kafka:1.+')
+    /*solr 基于luence搜索引擎*/
+    compile('org.springframework.data:spring-data-solr:3.0.10.RELEASE')
+    /*hbase依赖*/
+    compile('org.apache.hbase:hbase-client:0.98.6-hadoop2')
+    compile ('org.springframework.data:spring-data-hadoop:2.5.0.RELEASE')
 }

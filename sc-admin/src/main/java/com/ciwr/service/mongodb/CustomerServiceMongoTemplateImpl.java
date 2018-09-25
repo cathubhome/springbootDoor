@@ -1,4 +1,4 @@
-package com.ciwr.service;
+package com.ciwr.service.mongodb;
 
 import com.ciwr.global.constants.Constants;
 import com.ciwr.modle.Customer;
@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -84,10 +85,15 @@ public class CustomerServiceMongoTemplateImpl implements CustomerService {
 
     @Override
     public Page<Customer> findByFirstNameLike(String firstName, int page, int rows) {
-        Query query  = Query.query(Criteria.where("firstName").regex(".*?"+firstName+".*"));
+        //模糊匹配
+        Query query  = Query.query(Criteria.where("firstName").regex(".*?\\"+firstName+".*"));
         long totalCount = mongoTemplate.count(query, Customer.class, Constants.CUSTEOMER_COLLECTION_NAME);
         PageRequest pageRequest = PageRequest.of(page - 1, rows);
-        query.with(pageRequest);
+        Sort sort = new Sort(Sort.Direction.DESC,"lastName");
+        //返回的field域
+//        query.fields().exclude("lastName");
+        //指定排序与分页
+        query.with(sort).with(pageRequest);
         List<Customer> customerList = mongoTemplate.find(query, Customer.class, Constants.CUSTEOMER_COLLECTION_NAME);
         Page<Customer> customerPage = new PageImpl<>(customerList,pageRequest,totalCount);
         return customerPage;

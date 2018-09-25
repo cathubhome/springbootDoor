@@ -1,4 +1,4 @@
-package com.ciwr.service;
+package com.ciwr.service.mongodb;
 
 import com.ciwr.mapper.CustomerRepository;
 import com.ciwr.modle.Customer;
