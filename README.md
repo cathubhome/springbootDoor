@@ -5,12 +5,12 @@ Git版本控制
 springboot version:2.0
 
 1、shiro权限认证(kaptcha验证码)  
-2、redis提供缓存支持(提供两种redis操作:①reidsTemplate ;②原生的redis操作【并支持分布式锁】)  
+2、redis提供缓存支持(提供两种redis操作:①reidsTemplate ;②原生的redis操作【支持分布式锁】)  
 3、使用fastsjon作为消息转换器并解决中文乱码  
 4、使用druid作为项目数据源、支持事务并提供监控 http://localhost:8080/SmartControl/druid/login.html   
 5、使用swagger2提供restful api http://localhost:8080/swagger-ui.html  
 6、防xss（跨站脚本）网络攻击  
-7、日志切面化并持久化到数据库  
+7、AOP日志切面化并持久化到数据库  
 8、使用@schedualed创建定时任务（定时清空持久化日志） 
 9、使用devtools热部署，提高开发效率  
 10、提供cors跨域支持  
